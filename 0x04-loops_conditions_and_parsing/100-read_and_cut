@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#Displays the content of the file /etc/passwd
+while IFS=: read -r username uid dir; do
+    echo "$username:$uid:$dir"
+done < <(cut -d: -f1,3,6 /etc/passwd)
