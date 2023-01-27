@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Display Processes with bash
+# shellcheck disable=SC2009
+output=$(ps aux --forest)
+bash_processes=$(echo "$output" | grep -i "bash")
+while read -r line; do
+  pid=$(echo "$line" | awk '{print $2}')
+  echo "PID: $pid | $line"
+done <<< "$bash_processes"
