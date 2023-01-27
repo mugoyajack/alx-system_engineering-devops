@@ -13,7 +13,10 @@ stop() {
 	echo "manage_my_process stopped"
 }
 restart() {
-	stop
+	if [ -f $pid_file ]
+	then
+		stop
+	fi
 	start
 	echo "manage_my_process restarted"
 }
