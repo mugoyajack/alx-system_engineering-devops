@@ -13,11 +13,10 @@ stop() {
 	echo "manage_my_process stopped"
 }
 restart() {
-	if [ -f $pid_file ]
-	then
-		stop
-	fi
-	start
+	kill "$(cat $pid_file)"
+	rm $pid_file
+	./manage_my_process &
+	echo $!>$pid_file
 	echo "manage_my_process restarted"
 }
 case "$1" in
