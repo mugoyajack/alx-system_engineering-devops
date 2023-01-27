@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Kills process created by script 7
+pxid=$(pgrep -f "7-highlander")
+kill -9 "$pxid"
+
