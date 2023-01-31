@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#Terminate process created by script 4
+pkill -f "7-highlander"
+

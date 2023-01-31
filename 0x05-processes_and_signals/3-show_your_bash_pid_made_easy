@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Displays the PID along with the process name of processes 
+# whose name contain the word bash
+processes=$(find /proc -maxdepth 1 -regex  "/proc/[0-9]+" -printf '%f\n')
+for process in $processes; do
+	name=$(cat /proc/"$process"/comm)
+	if [[ $name == *"bash"* ]]; then
+		echo "$process $name"
+	fi
+done
