@@ -1,4 +1,10 @@
-#!/usr/bin/env bash
-#Displays all active IPV4 IPs on the machine
-ifconfig | grep 'inet addr:' | cut -d ":" -f 2 | cut -d " " -f 1
-
+#!/bin/bash
+#Display all active IPV4 addresses
+interfaces=$(ifconfig | grep -Eo '^[a-zA-Z0-9]+' | sort | uniq)
+for interface in $interfaces
+	do
+		address=$(ifconfig "$interface" | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*')
+		if [ -n "$address" ]; then
+			echo "$address"
+			fi
+			done

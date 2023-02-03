@@ -2,6 +2,7 @@
 #Resolve localhost to 127.0.0.2
 #resolve facebook.com to 8.8.8.8
 cp /etc/hosts ~/hosts.new
-sed -i 's/127.0.0.2 localhost\n8.8.8.8 facebook.com/' ~/hosts.cpy
+echo "127.0.0.1         localhost" > ~/hosts.new
+echo "157.240.22.35           facebook.com" >> ~/hosts.new
 cp -f ~/hosts.new /etc/hosts
 
